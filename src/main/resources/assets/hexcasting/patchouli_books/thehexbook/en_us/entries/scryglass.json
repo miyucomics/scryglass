@@ -1,0 +1,32 @@
+{
+	"name": "scryglass.page.scryglass.title",
+	"icon": "hexcasting:lens",
+	"category": "hexcasting:patterns",
+	"sortnum": 4,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "scryglass.page.scryglass.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "scryglass.page.scryglass.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "scryglass.page.scryglass.2"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "scryglass.page.scryglass.3"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:get_window_size",
+			"anchor": "scryglass:get_window_size",
+			"input": "",
+			"output": "vector",
+			"text": "scryglass.page.get_window_size.summary"
+		}
+	]
+}

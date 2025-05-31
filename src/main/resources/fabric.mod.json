@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "scryglass",
+	"version": "${version}",
+	"name": "Scryglass",
+	"description": "A Hexcasting addon to let you render UI!",
+	"authors": [
+		"miyucomics"
+	],
+	"contact": {
+		"homepage": "https://github.com/miyucomics/scryglass",
+		"sources": "https://github.com/miyucomics/scryglass"
+	},
+	"license": "MIT",
+	"icon": "assets/scryglass/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"adapter": "kotlin",
+				"value": "miyucomics.scryglass.ScryglassMain"
+			}
+		],
+		"client": [
+			{
+				"adapter": "kotlin",
+				"value": "miyucomics.scryglass.ScryglassClient"
+			}
+		]
+	},
+	"mixins": [
+		"scryglass.mixins.json"
+	],
+	"depends": {
+		"minecraft": "1.20.1",
+		"fabricloader": ">=0.16.7",
+		"fabric-api": "*",
+		"fabric-language-kotlin": ">=1.10.10+kotlin.1.9.10",
+		"hexcasting": ">=0.11.1-7-pre-646"
+	}
+}
