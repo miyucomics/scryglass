@@ -17,16 +17,52 @@
 			"text": "scryglass.page.scryglass.2"
 		},
 		{
-			"type": "patchouli:text",
-			"text": "scryglass.page.scryglass.3"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "scryglass:get_window_size",
 			"anchor": "scryglass:get_window_size",
 			"input": "",
 			"output": "vector",
 			"text": "scryglass.page.get_window_size.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:get_icons",
+			"anchor": "scryglass:get_icons",
+			"input": "",
+			"output": "list of indices",
+			"text": "scryglass.page.get_icons.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:remove_icon",
+			"anchor": "scryglass:remove_icon",
+			"input": "index",
+			"output": "",
+			"text": "scryglass.page.remove_icon.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:draw_text",
+			"anchor": "scryglass:draw_text",
+			"input": "index, vector, any",
+			"output": "",
+			"text": "scryglass.page.draw_text.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:draw_rect",
+			"anchor": "scryglass:draw_rect",
+			"input": "index, vector, vector, vector",
+			"output": "",
+			"text": "scryglass.page.draw_rect.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:draw_line",
+			"anchor": "scryglass:draw_line",
+			"input": "index, vector, vector, vector",
+			"output": "",
+			"text": "scryglass.page.draw_line.summary"
 		}
 	]
 }

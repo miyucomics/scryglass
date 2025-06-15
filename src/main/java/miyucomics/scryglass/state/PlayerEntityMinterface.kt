@@ -1,9 +1,7 @@
-package miyucomics.scryglass
-
-import miyucomics.scryglass.state.ViewformState
+package miyucomics.scryglass.state
 
 interface PlayerEntityMinterface {
 	fun getWindowSize(): Pair<Double, Double>
 	fun setWindowSize(size: Pair<Double, Double>)
-	fun getViewformState(): ViewformState
+	fun getScryglassState(): ScryglassState
 }

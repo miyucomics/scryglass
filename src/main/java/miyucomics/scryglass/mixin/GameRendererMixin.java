@@ -1,6 +1,6 @@
 package miyucomics.scryglass.mixin;
 
-import miyucomics.scryglass.inits.ScryglassNetworking;
+import miyucomics.scryglass.ScryglassClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,6 +13,6 @@ public class GameRendererMixin {
 	@Inject(method = "onResized", at = @At("TAIL"))
 	private void notifyAboutResize(int width, int height, CallbackInfo ci) {
 		if (MinecraftClient.getInstance().world != null)
-			ScryglassNetworking.sendDimensions();
+			ScryglassClient.sendDimensions();
 	}
 }

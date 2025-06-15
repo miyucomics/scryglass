@@ -17,16 +17,28 @@
 			"text": "scryglass.page.scryglass.2"
 		},
 		{
-			"type": "patchouli:text",
-			"text": "scryglass.page.scryglass.3"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "scryglass:get_window_size",
 			"anchor": "scryglass:get_window_size",
 			"input": "",
 			"output": "vector",
 			"text": "scryglass.page.get_window_size.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:remove_viewform",
+			"anchor": "scryglass:remove_viewform",
+			"input": "index",
+			"output": "",
+			"text": "scryglass.page.remove_viewform.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:text_viewform",
+			"anchor": "scryglass:text_viewform",
+			"input": "index, vector, any",
+			"output": "",
+			"text": "scryglass.page.text_viewform.summary"
 		}
 	]
 }
