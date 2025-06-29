@@ -14,7 +14,7 @@ abstract class Icon(iconType: IconType<out Icon>) {
 
 	fun tick(): Boolean {
 		age += 1
-		return age > 20
+		return age > 10
 	}
 
 	fun render(drawContext: DrawContext, deltaTime: Float) {

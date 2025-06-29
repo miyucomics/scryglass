@@ -48,8 +48,10 @@ class ScryglassState {
 		val iterator = frame.entries.iterator()
 		while (iterator.hasNext()) {
 			val entry = iterator.next()
-			if (entry.value.tick())
+			if (entry.value.tick()) {
 				iterator.remove()
+				removals.add(entry.key)
+			}
 		}
 	}
 
