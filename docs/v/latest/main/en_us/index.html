@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/scryglass/tree/e1b86a5c866825ade39bec58b6470c976db5920e"
+      href="https://github.com/miyucomics/scryglass/tree/62c25d91d61a84fee182cfc0898150f7ffee3d1d"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -367,7 +367,7 @@
   </div>
 <br />
   <div id="scryglass@scryglass:draw_text" class="">
-<h4 class="pattern-title">Draw Text (index, vector, any →)<a
+<h4 class="pattern-title">Draw Text (index, vector, number, any →)<a
     href="#scryglass@scryglass:draw_text"
     class="permalink small"
     title="Permalink"
@@ -419,7 +419,121 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aaqdwdwd</canvas>
   </details>
-      <p>Takes an index, a position, and any iota. Conjures an <span style="color: #8d6acc">Icon</span> displaying that iota.</p>
+      <p>Takes an index, a position, a number, and any iota. Conjures an <span style="color: #8d6acc">Icon</span> displaying that iota.</p>
+  </div>
+<br />
+    <p>The number determines the mode of text justification. 0 centers the text at the position given, 1 aligns the left side to the position given, and 2 aligns the right side to the position given.</p>
+<br />
+  <div id="scryglass@scryglass:rotate_icon" class="">
+<h4 class="pattern-title">Rotate Icon (index, number →)<a
+    href="#scryglass@scryglass:rotate_icon"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aaqdwdwdedd"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aaqdwdwdedd</canvas>
+  </details>
+      <p>Takes an index and an amount of rotation counterclockwise in terms of a full circle. Rotates the icon.</p>
+  </div>
+<br />
+  <div id="scryglass@scryglass:scale_icon" class="">
+<h4 class="pattern-title">Scale Icon (index, number →)<a
+    href="#scryglass@scryglass:scale_icon"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aaqwdwwwdwwwdweede"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aaqwdwwwdwwwdweede</canvas>
+  </details>
+      <p>Takes an index and a scaling factor. Scales the icon.</p>
   </div>
 <br />
   <div id="scryglass@scryglass:draw_rect" class="">
