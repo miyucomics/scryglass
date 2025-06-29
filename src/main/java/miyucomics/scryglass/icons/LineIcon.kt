@@ -1,12 +1,12 @@
 package miyucomics.scryglass.icons
 
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.nbt.NbtCompound
 import org.joml.Vector3f
 
-class LineIcon(iconType: IconType<LineIcon>) : BaseIcon(iconType) {
+class LineIcon(iconType: IconType<LineIcon>) : Icon(iconType) {
 	private lateinit var a: Vector3f
 	private lateinit var b: Vector3f
 	private var color: Int = 0
@@ -17,11 +17,7 @@ class LineIcon(iconType: IconType<LineIcon>) : BaseIcon(iconType) {
 		this.color = color
 	}
 
-	override fun render(drawContext: DrawContext, deltaTime: Float) {
-		val matrices = drawContext.matrices
-		matrices.push()
-		matrices.translate(MinecraftClient.getInstance().window.scaledWidth / 2f, MinecraftClient.getInstance().window.scaledHeight / 2f, 0f)
-
+	override fun renderCustom(matrices: MatrixStack, drawContext: DrawContext, deltaTime: Float) {
 		val buffer = drawContext.vertexConsumers.getBuffer(RenderLayer.getGuiOverlay())
 		val matrix = matrices.peek().positionMatrix
 
@@ -42,7 +38,6 @@ class LineIcon(iconType: IconType<LineIcon>) : BaseIcon(iconType) {
 		buffer.vertex(matrix, v1.x, v1.y, 0f).color(color).next()
 
 		drawContext.draw()
-		matrices.pop()
 	}
 
 	override fun writeCustomNBT(compound: NbtCompound) {

@@ -14,34 +14,44 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Identifier
 
 class ScryglassState {
-	private var previousFrame: Map<Int, Icon> = emptyMap()
-	private var workingFrame: MutableMap<Int, Icon> = mutableMapOf()
-	private val deltas: MutableList<Delta> = mutableListOf()
+	private val frame: MutableMap<Int, Icon>
+	private val additions: MutableMap<Int, Icon> = mutableMapOf()
+	private val removals: MutableList<Int> = mutableListOf()
 
-	constructor()
+	constructor() : this(mutableMapOf())
 
-	constructor (icons: Map<Int, Icon>) {
-		this.previousFrame = icons
-		this.workingFrame = previousFrame.toMutableMap()
+	constructor(frame: Map<Int, Icon>) {
+		this.frame = frame.toMutableMap()
 	}
 
-	data class Delta(val addedOrChanged: Map<Int, Icon>, val removed: Set<Int>)
+	fun peek(): MutableMap<Int, Icon> {
+		return frame
+	}
 
-	// Modify working frame
+	fun get(index: Int): Icon? {
+		return frame[index]
+	}
 
 	fun setIcon(index: Int, icon: Icon) {
-		workingFrame[index] = icon
+		frame[index] = icon
+		additions[index] = icon
+		removals.remove(index)
 	}
 
 	fun removeIcon(index: Int) {
-		workingFrame.remove(index)
+		frame.remove(index)
+		additions.remove(index)
+		removals.add(index)
 	}
 
-	fun peek(): List<Int> {
-		return workingFrame.keys.toList()
+	fun tick() {
+		val iterator = frame.entries.iterator()
+		while (iterator.hasNext()) {
+			val entry = iterator.next()
+			if (entry.value.tick())
+				iterator.remove()
+		}
 	}
-
-	// Called when player joins
 
 	fun prime(player: ServerPlayerEntity) {
 		val buf = PacketByteBufs.create()
@@ -49,71 +59,41 @@ class ScryglassState {
 		ServerPlayNetworking.send(player, ScryglassMain.PRIMER_CHANNEL, buf)
 	}
 
-	// Called to create a new frame and advance deltas
-
-	fun flip() {
-		val addedOrChanged = mutableMapOf<Int, Icon>()
-		val removed = mutableSetOf<Int>()
-
-		for ((index, icon) in workingFrame) {
-			if (previousFrame[index] != icon) {
-				addedOrChanged[index] = icon
-			}
-		}
-
-		for (index in previousFrame.keys) {
-			if (!workingFrame.containsKey(index)) {
-				removed.add(index)
-			}
-		}
-
-		deltas.add(Delta(addedOrChanged, removed))
-		previousFrame = workingFrame.toMap()
-		workingFrame = previousFrame.toMutableMap()
-	}
-
-	// Send accumulated deltas to client
-
 	fun push(player: ServerPlayerEntity) {
-		if (deltas.isEmpty())
+		if (additions.isEmpty() && removals.isEmpty())
 			return
 
-		val buf = PacketByteBufs.create()
-		val compound = NbtCompound()
-		val deltasList = NbtList()
+		val deltaNbt = NbtCompound()
 
-		for (delta in deltas) {
-			val deltaNbt = NbtCompound()
-			val addedList = NbtList()
-			for ((index, icon) in delta.addedOrChanged) {
-				val iconNbt = icon.toNBT()
-				iconNbt.putInt("index", index)
-				iconNbt.putString("type", ICON_REGISTRY.getId(icon.type)!!.toString())
-				addedList.add(iconNbt)
-			}
-
-			val removedList = NbtList()
-			for (index in delta.removed)
-				removedList.add(NbtInt.of(index))
-
-			deltaNbt.put("added", addedList)
-			deltaNbt.put("removed", removedList)
-			deltasList.add(deltaNbt)
+		val addedList = NbtList()
+		for ((index, icon) in additions) {
+			val iconNbt = icon.toNBT()
+			iconNbt.putInt("index", index)
+			iconNbt.putString("type", ICON_REGISTRY.getId(icon.type)!!.toString())
+			addedList.add(iconNbt)
 		}
+		deltaNbt.put("added", addedList)
 
-		compound.put("deltas", deltasList)
-		buf.writeNbt(compound)
+		val removedList = NbtList()
+		for (index in removals) {
+			removedList.add(NbtInt.of(index))
+		}
+		deltaNbt.put("removed", removedList)
+
+		val buf = PacketByteBufs.create()
+		val wrapper = NbtCompound()
+		wrapper.put("deltas", deltaNbt)
+		buf.writeNbt(wrapper)
 		ServerPlayNetworking.send(player, ScryglassMain.UPDATE_CHANNEL, buf)
 
-		deltas.clear()
+		additions.clear()
+		removals.clear()
 	}
-
-	// Serialize
 
 	fun serialize(): NbtCompound {
 		val compound = NbtCompound()
 		val list = NbtList()
-		for ((index, icon) in previousFrame) {
+		for ((index, icon) in frame) {
 			val iconNbt = icon.toNBT()
 			iconNbt.putInt("index", index)
 			iconNbt.putString("type", ICON_REGISTRY.getId(icon.type)!!.toString())

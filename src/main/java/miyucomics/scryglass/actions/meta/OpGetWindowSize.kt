@@ -1,4 +1,4 @@
-package miyucomics.scryglass.actions
+package miyucomics.scryglass.actions.meta
 
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction

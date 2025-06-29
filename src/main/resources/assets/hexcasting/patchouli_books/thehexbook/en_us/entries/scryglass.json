@@ -44,9 +44,29 @@
 			"type": "hexcasting:pattern",
 			"op_id": "scryglass:draw_text",
 			"anchor": "scryglass:draw_text",
-			"input": "index, vector, any",
+			"input": "index, vector, number, any",
 			"output": "",
 			"text": "scryglass.page.draw_text.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "scryglass.page.draw_text.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:rotate_icon",
+			"anchor": "scryglass:rotate_icon",
+			"input": "index, number",
+			"output": "",
+			"text": "scryglass.page.rotate_icon.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "scryglass:scale_icon",
+			"anchor": "scryglass:scale_icon",
+			"input": "index, number",
+			"output": "",
+			"text": "scryglass.page.scale_icon.summary"
 		},
 		{
 			"type": "hexcasting:pattern",

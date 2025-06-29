@@ -1,12 +1,12 @@
 package miyucomics.scryglass.icons
 
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.nbt.NbtCompound
 import org.joml.Vector3f
 
-class RectIcon(iconType: IconType<RectIcon>) : BaseIcon(iconType) {
+class RectIcon(iconType: IconType<RectIcon>) : Icon(iconType) {
 	private lateinit var position: Vector3f
 	private lateinit var size: Vector3f
 	private var color: Int = 0
@@ -17,11 +17,7 @@ class RectIcon(iconType: IconType<RectIcon>) : BaseIcon(iconType) {
 		this.color = color
 	}
 
-	override fun render(drawContext: DrawContext, deltaTime: Float) {
-		val matrices = drawContext.matrices
-		matrices.push()
-		matrices.translate(MinecraftClient.getInstance().window.scaledWidth / 2.0, MinecraftClient.getInstance().window.scaledHeight / 2.0, 0.0)
-
+	override fun renderCustom(matrices: MatrixStack, drawContext: DrawContext, deltaTime: Float) {
 		val buffer = drawContext.vertexConsumers.getBuffer(RenderLayer.getGuiOverlay())
 		val matrix = matrices.peek().positionMatrix
 
@@ -31,7 +27,6 @@ class RectIcon(iconType: IconType<RectIcon>) : BaseIcon(iconType) {
 		buffer.vertex(matrix, position.x, position.y, 0f).color(color).next()
 
 		drawContext.draw()
-		matrices.pop()
 	}
 
 	override fun writeCustomNBT(compound: NbtCompound) {

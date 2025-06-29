@@ -15,7 +15,6 @@ class ScryglassClient : ClientModInitializer {
 		ClientManager.init()
 		ClientPlayConnectionEvents.JOIN.register { _, _, _ -> sendDimensions() }
 		HudRenderCallback.EVENT.register { drawContext, tickDelta -> ClientManager.render(drawContext, tickDelta) }
-		ClientTickEvents.END_WORLD_TICK.register { ClientManager.discardTransientFrames() }
 	}
 
 	companion object {
