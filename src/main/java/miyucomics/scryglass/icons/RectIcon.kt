@@ -21,9 +21,9 @@ class RectIcon(iconType: IconType<RectIcon>) : Icon(iconType) {
 		val buffer = drawContext.vertexConsumers.getBuffer(RenderLayer.getGuiOverlay())
 		val matrix = matrices.peek().positionMatrix
 
-		buffer.vertex(matrix, position.x, position.y + size.y, 0f).color(color).next()
-		buffer.vertex(matrix, position.x + size.x, position.y + size.y, 0f).color(color).next()
 		buffer.vertex(matrix, position.x + size.x, position.y, 0f).color(color).next()
+		buffer.vertex(matrix, position.x + size.x, position.y - size.y, 0f).color(color).next()
+		buffer.vertex(matrix, position.x, position.y - size.y, 0f).color(color).next()
 		buffer.vertex(matrix, position.x, position.y, 0f).color(color).next()
 
 		drawContext.draw()
