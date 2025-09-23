@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/scryglass/tree/5be70a5d324cc1da4fe16e697adba8d6b22d4fd2"
+      href="https://github.com/miyucomics/scryglass/tree/6c096fbb974f6c8ca04f6ec83946a448415da0d9"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -196,7 +196,7 @@
 <br />
     <p>All oculus spells take an integer henceforth referred to as an index, which will be used to refer to and distinguish <span style="color: #8d6acc">Icons</span>. Using a used index in an oculus spell will destroy the old <span style="color: #8d6acc">Icon</span> and reassign it to the new one.</p><p><i>Virtual instruments spread out in front of her like playing cards show her relative position and velocity, her airspeed and orientation, her oxygen levels, mana levels, and her degree of concentration.</i></p>
 <br />
-    <p>Oculus spells also typically want a position to draw to, in the form of a vector. The x and y-components of the vector I pass in are coordinates on a coordinate plane whose origin is at the center of my vision. <a href="#scryglass@scryglass:get_window_size"><span style="color: #fc77be">Periphery Reflection</span></a> can be used to determine the full range of my vision. The z-component is used to determine which <span style="color: #8d6acc">Icons</span> appear over others.</p>
+    <p>I can imagine the position vector for an oculus spell as the zero vector at the center of my vision. As I increase the x and y components, the position travels rightwards and downwards respectively. <a href="#scryglass@scryglass:get_window_size"><span style="color: #fc77be">Periphery Reflection</span></a> determines the boundaries of my vision; half of it will place my text on the peripherals of what is visible to me.</p>
 <br />
   <div id="scryglass@scryglass:get_window_size" class="">
 <h4 class="pattern-title">Periphery Reflection (→ vector)<a
@@ -251,7 +251,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aawawaa</canvas>
   </details>
-      <p>Returns the full width and height of my vision as a vector.</p>
+      <p>Pushes a vector whose respective components are the width and height of my vision, and the breadth of my vision in radians.</p>
   </div>
 <br />
   <div id="scryglass@scryglass:get_icons" class="">
