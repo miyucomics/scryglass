@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/scryglass/tree/33bdf5711ca87167087b3fcf032e8e06c9a3a161"
+      href="https://github.com/miyucomics/scryglass/tree/cdff16e6608a3ecd74acf20876d3b946451989df"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -196,7 +196,7 @@
 <br />
     <p>所有眼眸法术都会接受一个整数用作索引，以此引用和区分<span style="color: #8d6acc">像图</span>。在眼眸法术中使用已被占用的索引，会销毁原有的<span style="color: #8d6acc">像图</span>再重新分配。</p><p><i>虚拟的仪器在她的眼前铺开，仿佛纸牌一般展示着她的相对位置和速度，她的空速和朝向，她的氧气水平、魔力水平，还有她精神的集中度。</i></p>
 <br />
-    <p>眼眸法术通常还会需要一个用于绘制的位置向量。所给向量的 X 和 Y 坐标对应视野中的坐标位置，该坐标平面以视野中央为原点。<a href="#scryglass@scryglass:get_window_size"><span style="color: #fc77be">边缘之精思</span></a>可用于检测视野的范围。Z 分量则用于决定哪些<span style="color: #8d6acc">像图</span>出现在其他<span style="color: #8d6acc">像图</span>之上。</p>
+    <p>眼眸法术所需的位置向量可以认为是视野中央的零向量。X 和 Y 坐标增加时，对应位置分别会向右和向下移动。<a href="#scryglass@scryglass:get_window_size"><span style="color: #fc77be">边缘之精思</span></a>可用于检测视野的范围。将所得范围减半，对应的位置即处于我视野的边缘。</p>
 <br />
   <div id="scryglass@scryglass:get_window_size" class="">
 <h4 class="pattern-title">边缘之精思 (→ vector)<a
@@ -251,7 +251,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：aawawaa</canvas>
   </details>
-      <p>以向量返回我视野的全宽和全高。</p>
+      <p>返回一个向量，其分量分别代表我的视野全宽、视野全高、以弧度表示的视野角。</p>
   </div>
 <br />
   <div id="scryglass@scryglass:get_icons" class="">
