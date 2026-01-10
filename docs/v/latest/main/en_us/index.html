@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/scryglass/tree/cdff16e6608a3ecd74acf20876d3b946451989df"
+      href="https://github.com/miyucomics/scryglass/tree/8ed09e5549c05216b9d902d4256460c9179c18fc"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -152,7 +152,7 @@
       src="https://raw.githubusercontent.com/FallingColors/HexMod/5831d9e2867f2369b8016aed83fbbd401fd7ad3d/Common/src/main/resources/assets/hexcasting/textures/item/lens.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    > Viewforming</a></li>
+    > Imparting Visions</a></li>
       </ul>
     </details>
 </nav>
@@ -183,7 +183,7 @@
       src="https://raw.githubusercontent.com/FallingColors/HexMod/5831d9e2867f2369b8016aed83fbbd401fd7ad3d/Common/src/main/resources/assets/hexcasting/textures/item/lens.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    >Viewforming<a
+    >Imparting Visions<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
@@ -192,11 +192,11 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>I can use <span style="color: #b38ef3">Hexcasting</span> to conjure small strands of visible <span style="color: #74b3f2">media</span> just before my eyes using a family of spells called the oculus spells. The small strand of <span style="color: #74b3f2">media</span>—called an <span style="color: #8d6acc">Icon</span>—dissolves in just about a second after conjuration, but if I had some method to automatically cast a <span style="color: #b38ef3">Hex</span>, I could permanently augment my own vision to suit my needs.</p>
+    <p>Using a special set of spells, I can paint directly onto my retinas to augment my vision with <span style="color: #b38ef3">Hexcasting</span>. Each shape is called a <span style="color: #8d6acc">Vision</span>.</p><p><i>Virtual instruments spread out in front of her like playing cards show her relative position and velocity, her airspeed and orientation, her oxygen levels, mana levels, and her degree of concentration.</i></p>
 <br />
-    <p>All oculus spells take an integer henceforth referred to as an index, which will be used to refer to and distinguish <span style="color: #8d6acc">Icons</span>. Using a used index in an oculus spell will destroy the old <span style="color: #8d6acc">Icon</span> and reassign it to the new one.</p><p><i>Virtual instruments spread out in front of her like playing cards show her relative position and velocity, her airspeed and orientation, her oxygen levels, mana levels, and her degree of concentration.</i></p>
+    <p><span style="color: #8d6acc">Visions</span> are uniquely identified and referred to using a non-negative integer assigned to them at creation called an <i>index</i>. If the same index is used in a separate drawing spell, the original <span style="color: #8d6acc">Vision</span> is immediately replaced with the new one. Indices are also the handles used to clear them.</p>
 <br />
-    <p>I can imagine the position vector for an oculus spell as the zero vector at the center of my vision. As I increase the x and y components, the position travels rightwards and downwards respectively. <a href="#scryglass@scryglass:get_window_size"><span style="color: #fc77be">Periphery Reflection</span></a> determines the boundaries of my vision; half of it will place my text on the peripherals of what is visible to me.</p>
+    <p>Drawing spells also take in a position vector for where to draw the <span style="color: #8d6acc">Vision</span>. The zero vector corresponds to the center of my vision and as I gaze rightwards and downwards, the x and y components increase in response. <a href="#scryglass@scryglass:get_window_size"><span style="color: #fc77be">Periphery Reflection</span></a> determines the boundaries of my vision; half of it will place my <span style="color: #8d6acc">Vision</span> on my peripheral vision.</p>
 <br />
   <div id="scryglass@scryglass:get_window_size" class="">
 <h4 class="pattern-title">Periphery Reflection (→ vector)<a
@@ -254,9 +254,9 @@
       <p>Pushes a vector whose respective components are the width and height of my vision, and the breadth of my vision in radians.</p>
   </div>
 <br />
-  <div id="scryglass@scryglass:get_icons" class="">
-<h4 class="pattern-title">Icons Reflection (→ list of indices)<a
-    href="#scryglass@scryglass:get_icons"
+  <div id="scryglass@scryglass:get_visions" class="">
+<h4 class="pattern-title">Prophet Reflection (→ list of indices)<a
+    href="#scryglass@scryglass:get_visions"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -307,12 +307,12 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: dwdwd</canvas>
   </details>
-      <p>Pushes a list of the indices of all the <span style="color: #8d6acc">Icons</span> I have. This appears as a list of numbers.</p>
+      <p>Pushes a list of the indices of all the <span style="color: #8d6acc">Visions</span> I have.</p>
   </div>
 <br />
-  <div id="scryglass@scryglass:remove_icon" class="">
-<h4 class="pattern-title">Clear Icon (index →)<a
-    href="#scryglass@scryglass:remove_icon"
+  <div id="scryglass@scryglass:remove_vision" class="">
+<h4 class="pattern-title">Dispel Vision (index →)<a
+    href="#scryglass@scryglass:remove_vision"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -363,7 +363,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: awawa</canvas>
   </details>
-      <p>Immediately clears an <span style="color: #8d6acc">Icon</span>.</p>
+      <p>Immediately destroys a <span style="color: #8d6acc">Vision</span>.</p>
   </div>
 <br />
   <div id="scryglass@scryglass:draw_text" class="">
@@ -419,14 +419,14 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aaqdwdwd</canvas>
   </details>
-      <p>Takes an index, a position, a number, and any iota. Conjures an <span style="color: #8d6acc">Icon</span> displaying that iota.</p>
+      <p>Takes an index, a position, a number, and any iota. Conjures a <span style="color: #8d6acc">Vision</span> displaying that iota.</p>
   </div>
 <br />
     <p>The number determines the mode of text justification. 0 centers the text at the position given, 1 aligns the left side to the position given, and 2 aligns the right side to the position given.</p>
 <br />
-  <div id="scryglass@scryglass:rotate_icon" class="">
-<h4 class="pattern-title">Rotate Icon (index, number →)<a
-    href="#scryglass@scryglass:rotate_icon"
+  <div id="scryglass@scryglass:rotate_vision" class="">
+<h4 class="pattern-title">Rotate Vision (index, number →)<a
+    href="#scryglass@scryglass:rotate_vision"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -477,12 +477,12 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aaqdwdwdedd</canvas>
   </details>
-      <p>Takes an index and an amount of rotation counterclockwise in terms of a full circle. Rotates the icon.</p>
+      <p>Takes an index and an amount of rotation counterclockwise in terms of a full circle. Rotates the vision.</p>
   </div>
 <br />
-  <div id="scryglass@scryglass:scale_icon" class="">
-<h4 class="pattern-title">Scale Icon (index, number →)<a
-    href="#scryglass@scryglass:scale_icon"
+  <div id="scryglass@scryglass:scale_vision" class="">
+<h4 class="pattern-title">Scale Vision (index, number →)<a
+    href="#scryglass@scryglass:scale_vision"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -533,7 +533,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aaqwdwwwdwwwdweede</canvas>
   </details>
-      <p>Takes an index and a scaling factor. Scales the icon.</p>
+      <p>Takes an index and a scaling factor. Scales the <span style="color: #8d6acc">Vision</span>.</p>
   </div>
 <br />
   <div id="scryglass@scryglass:draw_rect" class="">
@@ -589,7 +589,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aaqdwdwdewaq</canvas>
   </details>
-      <p>Takes an index, a position, a size, and a color. Conjures an <span style="color: #8d6acc">Icon</span> displaying that rectangle.</p>
+      <p>Takes an index, a position, a size, and a color. Conjures a <span style="color: #8d6acc">Vision</span> displaying that rectangle.</p>
   </div>
 <br />
   <div id="scryglass@scryglass:draw_line" class="">
@@ -645,7 +645,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aaqdwdwdeww</canvas>
   </details>
-      <p>Takes an index, a position, a size, and a color. Conjures an <span style="color: #8d6acc">Icon</span> that joins between the two with a thin line.</p>
+      <p>Takes an index, a position, a size, and a color. Conjures a <span style="color: #8d6acc">Vision</span> that joins between the two with a thin line.</p>
   </div>
 <br />
 </div>
